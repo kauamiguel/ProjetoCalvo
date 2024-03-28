@@ -10,6 +10,7 @@ struct InitialView: View {
     @State var showProcessing: Bool = false
     @State var openCamera = false
     @State var image = UIImage()
+    @State var coreMLResult = ""
     
     var body: some View {
         NavigationView {
@@ -35,7 +36,7 @@ struct InitialView: View {
             }
             .padding()
             .fullScreenCover(isPresented: $openCamera, content: {
-                ImagePicker(sourceType: .camera, selectedImage: $image, showProcessing: $showProcessing)
+                ImagePicker(sourceType: .camera, selectedImage: $image, showProcessing: $showProcessing, coreMlResult: $coreMLResult)
             })
         }
     }
@@ -146,7 +147,29 @@ struct ProcessingView: View {
                         .frame(width: 500, height: 500)
                 }
             }
-        }
+        }.onAppear(perform: {
+            let model =  try! CalvoModel()
+            
+            func coreMLResult(forImage image : UIImage) -> String?{
+                    
+                    if let pixelImage = ImageProcessor.pixelBuffer(forImage: image.cgImage!){
+                        guard let scene = try? model.prediction(image: pixelImage) else {fatalError()}
+                        return scene.target
+                    }
+                    
+                    return nil
+                }
+            
+            guard let result = coreMLResult(forImage: image) else {return}
+            print(result)
+            if result == "Bald"{
+                isCalvo = true
+            }else{
+                isCalvo = false
+            }
+         
+        })
+        
     }
 }
 

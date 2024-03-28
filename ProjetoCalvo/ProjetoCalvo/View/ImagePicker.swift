@@ -7,6 +7,7 @@ struct ImagePicker : UIViewControllerRepresentable {
     @Environment(\.presentationMode) private var presentationMode
     @Binding var selectedImage : UIImage
     @Binding var showProcessing: Bool
+    @Binding var coreMlResult : String
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController{
         let imagePicker = UIImagePickerController()
@@ -19,8 +20,7 @@ struct ImagePicker : UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
         
     }
-    
-    
+
     final class Coordinator : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
         var parent : ImagePicker
         
@@ -35,6 +35,8 @@ struct ImagePicker : UIViewControllerRepresentable {
             }
             
             parent.showProcessing = true
+            
+            
             parent.presentationMode.wrappedValue.dismiss()
             
         }
