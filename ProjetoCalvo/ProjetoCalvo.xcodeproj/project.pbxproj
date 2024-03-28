@@ -14,7 +14,7 @@
 		CE5EF11E2BB22FC00072C607 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EF11D2BB22FC00072C607 /* ImageProcessor.swift */; };
 		CE5EF1212BB245500072C607 /* CalvoModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CE5EF1202BB245500072C607 /* CalvoModel.mlmodel */; };
 		CE5EF1232BB245700072C607 /* CoreMLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EF1222BB245700072C607 /* CoreMLManager.swift */; };
-		CEFF25BF2BB32F1400474B08 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF25BE2BB32F1400474B08 /* Camera.swift */; };
+		CEFF25BF2BB32F1400474B08 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF25BE2BB32F1400474B08 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 		CE5EF11D2BB22FC00072C607 /* ImageProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		CE5EF1202BB245500072C607 /* CalvoModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CalvoModel.mlmodel; sourceTree = "<group>"; };
 		CE5EF1222BB245700072C607 /* CoreMLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLManager.swift; sourceTree = "<group>"; };
-		CEFF25BE2BB32F1400474B08 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		CEFF25BE2BB32F1400474B08 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5EF10E2BB22F580072C607 /* InitialView.swift */,
-				CEFF25BE2BB32F1400474B08 /* Camera.swift */,
+				CEFF25BE2BB32F1400474B08 /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 			files = (
 				CE5EF1212BB245500072C607 /* CalvoModel.mlmodel in Sources */,
 				CE5EF1232BB245700072C607 /* CoreMLManager.swift in Sources */,
-				CEFF25BF2BB32F1400474B08 /* Camera.swift in Sources */,
+				CEFF25BF2BB32F1400474B08 /* ImagePicker.swift in Sources */,
 				CE5EF10F2BB22F580072C607 /* InitialView.swift in Sources */,
 				CE5EF11E2BB22FC00072C607 /* ImageProcessor.swift in Sources */,
 				CE5EF10D2BB22F580072C607 /* ProjetoCalvoApp.swift in Sources */,

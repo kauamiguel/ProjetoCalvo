@@ -8,25 +8,35 @@ import SwiftUI
 
 struct InitialView: View {
     @State var showProcessing: Bool = false
+    @State var openCamera = false
+    @State var image = UIImage()
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
-                NavigationLink {
-                    Camera()
-                } label: {
+                NavigationLink(
+                    destination: ProcessingView(image: $image),
+                    isActive: $showProcessing,
+                    label: { EmptyView() }
+                )
+                
+                Button(action: {
+                    openCamera.toggle()
+                }, label: {
                     ZStack {
                         Image("CalvoButton")
                             .resizable()
                             .scaledToFit()
                         Text("Calvo Analisor")
                             .font(.largeTitle)
-                            .foregroundStyle(.white)
+                            .foregroundColor(.white)
                     }
-                }
-                
+                })
             }
             .padding()
+            .fullScreenCover(isPresented: $openCamera, content: {
+                ImagePicker(sourceType: .camera, selectedImage: $image, showProcessing: $showProcessing)
+            })
         }
     }
 }
@@ -40,23 +50,24 @@ struct ProcessingView: View {
     @State private var processAmount = 0.0
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State var isCalvo: Bool = true
+    @Binding var image : UIImage
     
     var body: some View {
         
         VStack {
             ZStack {
-                Image("vegetaCalvo")
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
                     .foregroundStyle(.mint)
                 if processAmount >= 100 {
                     VStack {
-//                        Image(systemName: "checkmark.rectangle.stack.fill")
-//                            .resizable()
-//                            .scaledToFill()
-//                            .frame(width: 50, height: 50)
-//                            .foregroundStyle(.mint)
+                        //                        Image(systemName: "checkmark.rectangle.stack.fill")
+                        //                            .resizable()
+                        //                            .scaledToFill()
+                        //                            .frame(width: 50, height: 50)
+                        //                            .foregroundStyle(.mint)
                         if isCalvo {
                             ZStack {
                                 Rectangle()
@@ -117,7 +128,7 @@ struct ProcessingView: View {
                                         .frame(width: 50, height: 50)
                                         .padding(.leading, 10)
                                 }
-                               // .padding(.bottom, 50)
+                                // .padding(.bottom, 50)
                             }
                             .ignoresSafeArea(.all)
                         }
