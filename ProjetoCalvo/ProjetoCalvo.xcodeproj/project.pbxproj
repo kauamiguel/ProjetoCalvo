@@ -320,7 +320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjetoCalvo/Preview Content\"";
-				DEVELOPMENT_TEAM = 7PL64AUG55;
+				DEVELOPMENT_TEAM = 3A253HAV36;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Precisamos do acesso da sua camera";
@@ -355,7 +355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjetoCalvo/Preview Content\"";
-				DEVELOPMENT_TEAM = 7PL64AUG55;
+				DEVELOPMENT_TEAM = 3A253HAV36;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Precisamos do acesso da sua camera";

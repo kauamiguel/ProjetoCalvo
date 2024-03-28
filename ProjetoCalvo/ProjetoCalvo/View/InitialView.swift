@@ -50,7 +50,7 @@ struct ProcessingView: View {
     @Environment(\.dismiss) var dismiss
     @State private var processAmount = 0.0
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    @State var isCalvo: Bool = true
+    @State private var isCalvo: Bool = false
     @Binding var image : UIImage
     
     var body: some View {
@@ -64,34 +64,28 @@ struct ProcessingView: View {
                     .foregroundStyle(.mint)
                 if processAmount >= 100 {
                     VStack {
-                        //                        Image(systemName: "checkmark.rectangle.stack.fill")
-                        //                            .resizable()
-                        //                            .scaledToFill()
-                        //                            .frame(width: 50, height: 50)
-                        //                            .foregroundStyle(.mint)
-                        if isCalvo {
                             ZStack {
                                 Rectangle()
                                     .frame(maxWidth: .infinity, maxHeight: 120)
-                                    .foregroundStyle(.green)
+                                    .foregroundStyle(isCalvo ? .green : .red)
                                     .ignoresSafeArea()
                                 
                                 Circle()
                                     .frame(width: 180, height: 180)
-                                    .foregroundStyle(.green)
+                                    .foregroundStyle(isCalvo ? .green : .red)
                                     .overlay {
-                                        Image("Check")
+                                        Image(isCalvo ? "Check" : "XMark")
                                             .resizable()
                                             .scaledToFill()
                                             .frame(width: 50, height: 50)
-                                            .foregroundStyle(.mint)
+                                          //  .foregroundStyle(.mint)
                                             .padding(.top, 60)
                                     }
                                     .padding(.top, 20)
                                 HStack {
-                                    Text("Calvo")
+                                    Text(isCalvo ? "Calvo" : "Not Calvo")
                                         .font(.title)
-                                    Image("ARocha 1")
+                                    Image(isCalvo ? "ARocha 1" : "ChaveMetaleiro")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 50, height: 50)
@@ -100,39 +94,7 @@ struct ProcessingView: View {
                                 .padding(.bottom, 50)
                             }
                             .ignoresSafeArea(.all)
-                        }
                         Spacer()
-                        if !isCalvo {
-                            ZStack {
-                                Rectangle()
-                                    .frame(maxWidth: .infinity, maxHeight: 120)
-                                    .foregroundStyle(.red)
-                                    .ignoresSafeArea(.all)
-                                Circle()
-                                    .frame(width: 180, height: 180)
-                                    .foregroundStyle(.red)
-                                    .overlay {
-                                        Image("Check")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 50, height: 50)
-                                            .foregroundStyle(.mint)
-                                        //    .padding(.top, 60)
-                                    }
-                                    .padding(.top, 20)
-                                HStack {
-                                    Text("Not Calvo")
-                                        .font(.title)
-                                    Image("ChaveMetaleiro")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 50, height: 50)
-                                        .padding(.leading, 10)
-                                }
-                                // .padding(.bottom, 50)
-                            }
-                            .ignoresSafeArea(.all)
-                        }
                     }
                 } else {
                     ProgressView("Processing...", value: processAmount, total: 100)
